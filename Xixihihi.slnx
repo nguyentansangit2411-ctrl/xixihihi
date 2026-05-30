@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="Xixihihi.API/Xixihihi.API.csproj" />
+  <Project Path="Xixihihi.Application.Tests/Xixihihi.Application.Tests.csproj" />
+  <Project Path="Xixihihi.Application/Xixihihi.Application.csproj" />
+  <Project Path="Xixihihi.Domain/Xixihihi.Domain.csproj" />
+  <Project Path="Xixihihi.Infrastructure/Xixihihi.Infrastructure.csproj" />
+  <Project Path="Xixihihi.API.Tests/Xixihihi.API.Tests.csproj" />
+</Solution>

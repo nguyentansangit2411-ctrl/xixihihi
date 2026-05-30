@@ -1,0 +1,372 @@
+{
+  "info": {
+    "name": "Xixihihi API",
+    "description": "Postman Collection cho toàn bộ các endpoint của hệ thống Xixihihi.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5189",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "your_jwt_token_here",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login with Google",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"idToken\": \"test_id_token_123\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/auth/google", "host": ["{{baseUrl}}"], "path": ["api", "auth", "google"] }
+          }
+        },
+        {
+          "name": "Refresh Token",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accessToken\": \"your_access_token\",\n  \"refreshToken\": \"your_refresh_token\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/auth/refresh", "host": ["{{baseUrl}}"], "path": ["api", "auth", "refresh"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Get Current User",
+          "request": {
+            "auth": { "type": "bearer", "bearer": [ { "key": "token", "value": "{{token}}", "type": "string" } ] },
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/users/me", "host": ["{{baseUrl}}"], "path": ["api", "users", "me"] }
+          }
+        },
+        {
+          "name": "Update Current User",
+          "request": {
+            "auth": { "type": "bearer", "bearer": [ { "key": "token", "value": "{{token}}", "type": "string" } ] },
+            "method": "PUT",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"displayName\": \"New Name\",\n  \"avatarUrl\": \"https://example.com/avatar.jpg\",\n  \"phoneNumber\": \"0123456789\",\n  \"zaloLink\": \"\",\n  \"facebookLink\": \"\",\n  \"provinceId\": \"00000000-0000-0000-0000-000000000000\",\n  \"wardId\": \"00000000-0000-0000-0000-000000000000\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/users/me", "host": ["{{baseUrl}}"], "path": ["api", "users", "me"] }
+          }
+        },
+        {
+          "name": "Get User By Id",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/users/00000000-0000-0000-0000-000000000000", "host": ["{{baseUrl}}"], "path": ["api", "users", "00000000-0000-0000-0000-000000000000"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "Get Categories",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/categories", "host": ["{{baseUrl}}"], "path": ["api", "categories"] }
+          }
+        },
+        {
+          "name": "Create Category",
+          "request": {
+            "auth": { "type": "bearer", "bearer": [ { "key": "token", "value": "{{token}}", "type": "string" } ] },
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Electronics\",\n  \"description\": \"Electronic devices\",\n  \"iconUrl\": \"https://example.com/icon.png\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/categories", "host": ["{{baseUrl}}"], "path": ["api", "categories"] }
+          }
+        },
+        {
+          "name": "Update Category",
+          "request": {
+            "auth": { "type": "bearer", "bearer": [ { "key": "token", "value": "{{token}}", "type": "string" } ] },
+            "method": "PUT",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Updated Category\",\n  \"description\": \"Updated description\",\n  \"iconUrl\": \"https://example.com/icon.png\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/categories/00000000-0000-0000-0000-000000000000", "host": ["{{baseUrl}}"], "path": ["api", "categories", "00000000-0000-0000-0000-000000000000"] }
+          }
+        },
+        {
+          "name": "Delete Category",
+          "request": {
+            "auth": { "type": "bearer", "bearer": [ { "key": "token", "value": "{{token}}", "type": "string" } ] },
+            "method": "DELETE",
+            "url": { "raw": "{{baseUrl}}/api/categories/00000000-0000-0000-0000-000000000000", "host": ["{{baseUrl}}"], "path": ["api", "categories", "00000000-0000-0000-0000-000000000000"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Get Products",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/products?page=1&pageSize=20&sortBy=newest",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "products"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "pageSize", "value": "20" },
+                { "key": "sortBy", "value": "newest" },
+                { "key": "search", "value": "", "disabled": true },
+                { "key": "categoryId", "value": "", "disabled": true },
+                { "key": "provinceId", "value": "", "disabled": true }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Product By Id",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/products/00000000-0000-0000-0000-000000000000", "host": ["{{baseUrl}}"], "path": ["api", "products", "00000000-0000-0000-0000-000000000000"] }
+          }
+        },
+        {
+          "name": "Create Product",
+          "request": {
+            "auth": { "type": "bearer", "bearer": [ { "key": "token", "value": "{{token}}", "type": "string" } ] },
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Test Product\",\n  \"description\": \"Description\",\n  \"price\": 100000,\n  \"isNegotiable\": true,\n  \"condition\": \"New\",\n  \"transactionType\": \"Sell\",\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"brand\": \"Brand\",\n  \"size\": \"M\",\n  \"provinceId\": \"00000000-0000-0000-0000-000000000000\",\n  \"wardId\": \"00000000-0000-0000-0000-000000000000\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/products", "host": ["{{baseUrl}}"], "path": ["api", "products"] }
+          }
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "auth": { "type": "bearer", "bearer": [ { "key": "token", "value": "{{token}}", "type": "string" } ] },
+            "method": "PUT",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Updated Product\",\n  \"description\": \"Description\",\n  \"price\": 150000,\n  \"isNegotiable\": false,\n  \"condition\": \"Used\",\n  \"transactionType\": \"Sell\",\n  \"categoryId\": \"00000000-0000-0000-0000-000000000000\",\n  \"brand\": \"Brand\",\n  \"size\": \"L\",\n  \"provinceId\": \"00000000-0000-0000-0000-000000000000\",\n  \"wardId\": \"00000000-0000-0000-0000-000000000000\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/products/00000000-0000-0000-0000-000000000000", "host": ["{{baseUrl}}"], "path": ["api", "products", "00000000-0000-0000-0000-000000000000"] }
+          }
+        },
+        {
+          "name": "Update Product Status",
+          "request": {
+            "auth": { "type": "bearer", "bearer": [ { "key": "token", "value": "{{token}}", "type": "string" } ] },
+            "method": "PATCH",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"Active\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/products/00000000-0000-0000-0000-000000000000/status", "host": ["{{baseUrl}}"], "path": ["api", "products", "00000000-0000-0000-0000-000000000000", "status"] }
+          }
+        },
+        {
+          "name": "Delete Product",
+          "request": {
+            "auth": { "type": "bearer", "bearer": [ { "key": "token", "value": "{{token}}", "type": "string" } ] },
+            "method": "DELETE",
+            "url": { "raw": "{{baseUrl}}/api/products/00000000-0000-0000-0000-000000000000", "host": ["{{baseUrl}}"], "path": ["api", "products", "00000000-0000-0000-0000-000000000000"] }
+          }
+        },
+        {
+          "name": "Upload Product Image",
+          "request": {
+            "auth": { "type": "bearer", "bearer": [ { "key": "token", "value": "{{token}}", "type": "string" } ] },
+            "method": "POST",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": []
+                }
+              ]
+            },
+            "url": { "raw": "{{baseUrl}}/api/products/00000000-0000-0000-0000-000000000000/images", "host": ["{{baseUrl}}"], "path": ["api", "products", "00000000-0000-0000-0000-000000000000", "images"] }
+          }
+        },
+        {
+          "name": "Delete Product Image",
+          "request": {
+            "auth": { "type": "bearer", "bearer": [ { "key": "token", "value": "{{token}}", "type": "string" } ] },
+            "method": "DELETE",
+            "url": { "raw": "{{baseUrl}}/api/products/00000000-0000-0000-0000-000000000000/images/00000000-0000-0000-0000-000000000000", "host": ["{{baseUrl}}"], "path": ["api", "products", "00000000-0000-0000-0000-000000000000", "images", "00000000-0000-0000-0000-000000000000"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Locations",
+      "item": [
+        {
+          "name": "Get Provinces",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/provinces", "host": ["{{baseUrl}}"], "path": ["api", "provinces"] }
+          }
+        },
+        {
+          "name": "Get Wards By Province",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/provinces/00000000-0000-0000-0000-000000000000/wards", "host": ["{{baseUrl}}"], "path": ["api", "provinces", "00000000-0000-0000-0000-000000000000", "wards"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Notifications",
+      "item": [
+        {
+          "name": "Get Notifications",
+          "request": {
+            "auth": { "type": "bearer", "bearer": [ { "key": "token", "value": "{{token}}", "type": "string" } ] },
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/notifications?page=1&pageSize=20",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "notifications"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "pageSize", "value": "20" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Mark As Read",
+          "request": {
+            "auth": { "type": "bearer", "bearer": [ { "key": "token", "value": "{{token}}", "type": "string" } ] },
+            "method": "PATCH",
+            "url": { "raw": "{{baseUrl}}/api/notifications/00000000-0000-0000-0000-000000000000/read", "host": ["{{baseUrl}}"], "path": ["api", "notifications", "00000000-0000-0000-0000-000000000000", "read"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Saved Searches",
+      "item": [
+        {
+          "name": "Get Saved Searches",
+          "request": {
+            "auth": { "type": "bearer", "bearer": [ { "key": "token", "value": "{{token}}", "type": "string" } ] },
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/saved-searches", "host": ["{{baseUrl}}"], "path": ["api", "saved-searches"] }
+          }
+        },
+        {
+          "name": "Create Saved Search",
+          "request": {
+            "auth": { "type": "bearer", "bearer": [ { "key": "token", "value": "{{token}}", "type": "string" } ] },
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Cheap laptops\",\n  \"searchTerm\": \"laptop\",\n  \"categoryId\": null,\n  \"minPrice\": 100000,\n  \"maxPrice\": 5000000,\n  \"provinceId\": null\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/saved-searches", "host": ["{{baseUrl}}"], "path": ["api", "saved-searches"] }
+          }
+        },
+        {
+          "name": "Delete Saved Search",
+          "request": {
+            "auth": { "type": "bearer", "bearer": [ { "key": "token", "value": "{{token}}", "type": "string" } ] },
+            "method": "DELETE",
+            "url": { "raw": "{{baseUrl}}/api/saved-searches/00000000-0000-0000-0000-000000000000", "host": ["{{baseUrl}}"], "path": ["api", "saved-searches", "00000000-0000-0000-0000-000000000000"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Seller Ratings",
+      "item": [
+        {
+          "name": "Get Seller Ratings",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/sellers/00000000-0000-0000-0000-000000000000/ratings?page=1&pageSize=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "sellers", "00000000-0000-0000-0000-000000000000", "ratings"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "pageSize", "value": "10" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Seller Rating Summary",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/api/sellers/00000000-0000-0000-0000-000000000000/ratings/summary", "host": ["{{baseUrl}}"], "path": ["api", "sellers", "00000000-0000-0000-0000-000000000000", "ratings", "summary"] }
+          }
+        },
+        {
+          "name": "Rate Seller",
+          "request": {
+            "auth": { "type": "bearer", "bearer": [ { "key": "token", "value": "{{token}}", "type": "string" } ] },
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rating\": 5,\n  \"comment\": \"Great seller!\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/sellers/00000000-0000-0000-0000-000000000000/ratings", "host": ["{{baseUrl}}"], "path": ["api", "sellers", "00000000-0000-0000-0000-000000000000", "ratings"] }
+          }
+        },
+        {
+          "name": "Update Seller Rating",
+          "request": {
+            "auth": { "type": "bearer", "bearer": [ { "key": "token", "value": "{{token}}", "type": "string" } ] },
+            "method": "PUT",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rating\": 4,\n  \"comment\": \"Updated comment\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/api/sellers/ratings/00000000-0000-0000-0000-000000000000", "host": ["{{baseUrl}}"], "path": ["api", "sellers", "ratings", "00000000-0000-0000-0000-000000000000"] }
+          }
+        }
+      ]
+    }
+  ]
+}
