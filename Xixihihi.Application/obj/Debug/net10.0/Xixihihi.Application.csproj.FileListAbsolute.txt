@@ -13,3 +13,4 @@ D:\Desktop\xixihihi\Xixihihi.Application\obj\Debug\net10.0\Xixihihi.Application.
 D:\Desktop\xixihihi\Xixihihi.Application\obj\Debug\net10.0\refint\Xixihihi.Application.dll
 D:\Desktop\xixihihi\Xixihihi.Application\obj\Debug\net10.0\Xixihihi.Application.pdb
 D:\Desktop\xixihihi\Xixihihi.Application\obj\Debug\net10.0\ref\Xixihihi.Application.dll
+D:\Desktop\xixihihi\Xixihihi.Application\obj\Debug\net10.0\Xixihihi.Application.sourcelink.json

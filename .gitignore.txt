@@ -1,0 +1,32 @@
+# Build outputs
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# User Secrets & local config
+appsettings.Development.json
+appsettings.*.json
+!appsettings.json
+secrets.json
+
+# Logs
+logs/
+*.log
+
+# Docker
+.dockerignore
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test results
+test_results.txt
+test_output.txt
+test_output_product.txt

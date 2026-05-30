@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -376,7 +376,7 @@ namespace Xixihihi.Infrastructure.Migrations
                 table: "Users",
                 column: "RefreshToken",
                 unique: true,
-                filter: "[RefreshToken] IS NOT NULL");
+                filter: "\"RefreshToken\" IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_WardId",

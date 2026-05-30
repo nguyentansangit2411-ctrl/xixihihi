@@ -17,3 +17,4 @@ D:\Desktop\xixihihi\Xixihihi.Infrastructure\obj\Debug\net10.0\refint\Xixihihi.In
 D:\Desktop\xixihihi\Xixihihi.Infrastructure\obj\Debug\net10.0\Xixihihi.Infrastructure.pdb
 D:\Desktop\xixihihi\Xixihihi.Infrastructure\obj\Debug\net10.0\Xixihihi.Infrastructure.genruntimeconfig.cache
 D:\Desktop\xixihihi\Xixihihi.Infrastructure\obj\Debug\net10.0\ref\Xixihihi.Infrastructure.dll
+D:\Desktop\xixihihi\Xixihihi.Infrastructure\obj\Debug\net10.0\Xixihihi.Infrastructure.sourcelink.json

@@ -162,3 +162,4 @@ D:\Desktop\xixihihi\Xixihihi.API\bin\Debug\net10.0\Microsoft.Extensions.Diagnost
 D:\Desktop\xixihihi\Xixihihi.API\bin\Debug\net10.0\HealthChecks.NpgSql.dll
 D:\Desktop\xixihihi\Xixihihi.API\bin\Debug\net10.0\Npgsql.dll
 D:\Desktop\xixihihi\Xixihihi.API\bin\Debug\net10.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+D:\Desktop\xixihihi\Xixihihi.API\obj\Debug\net10.0\Xixihihi.API.sourcelink.json
