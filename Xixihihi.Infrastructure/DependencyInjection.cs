@@ -17,7 +17,7 @@ public static class DependencyInjection
             options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
 
         services.AddHealthChecks()
-            .AddNpgsql(configuration.GetConnectionString("DefaultConnection")!, name: "database");
+            .AddNpgsql(configuration.GetConnectionString("DefaultConnection")!);
 
         services.Configure<CloudinarySettings>(configuration.GetSection("Cloudinary"));
         services.Configure<SmtpSettings>(configuration.GetSection("Smtp"));
