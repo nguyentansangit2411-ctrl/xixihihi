@@ -17,8 +17,7 @@ public static class DependencyInjection
             options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
 
         services.AddHealthChecks()
-            .AddNpgSql(configuration.GetConnectionString("DefaultConnection")!, name: "database")
-            .AddUrlGroup(new Uri("https://api.cloudinary.com"), name: "cloudinary");
+            .AddNpgsql(configuration.GetConnectionString("DefaultConnection")!, name: "database");
 
         services.Configure<CloudinarySettings>(configuration.GetSection("Cloudinary"));
         services.Configure<SmtpSettings>(configuration.GetSection("Smtp"));
